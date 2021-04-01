@@ -1,0 +1,37 @@
+{% load static %}
+
+<html>
+    <header>
+        <title>Popular Authors - {% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'pages/main.css' %}">
+        {% block extra_header_contents %}{% endblock %}
+    </header>
+    <body>
+        <div id="menu">
+            <p>Menu:</p>
+            <ul>
+                <li><a href="/">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Log out</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Log in</a></li>
+                    <li><a href="/register">Register</a></li>
+                {% endif %}
+                <li><a href="/books">Books list</a></li>
+                <li><a href="/new_author">Add an author</a></li>
+                <li><a href="/books_for_author">Books for an author</a></li>
+            </ul>
+        </div>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        {{ message }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,52 @@
+[{
+        "model": "pages.item",
+        "pk": 1,
+        "fields": {
+            "name": "Ursula K. Le Guin"
+        }
+    },
+    {
+        "model": "pages.item",
+        "pk": 2,
+        "fields": {
+            "name": "Charlotte Bront"
+        }
+    },
+    {
+        "model": "pages.item",
+        "pk": 3,
+        "fields": {
+            "name": "Madeleine L'Engle"
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 1,
+        "fields": {
+            "text": "The First Men in the Moon",
+            "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 2,
+        "fields": {
+            "text": "The First Men in the Moon",
+            "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 3,
+        "fields": {
+            "text": "The First Men in the Moon",
+            "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    }
+]

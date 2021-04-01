@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}All books{% endblock %}
+
+{% block body %}
+    <h1>Some popular authors</h1>
+    <table>
+        {% for author in authors %}
+            <tr>
+                <td colspan="3">
+                    {{ author.name }}
+                </td>
+            </tr>
+            {% for book in author.book_set.all %}
+                <tr>
+                    <td>---</td>
+                    <td>
+                        {{ book.title}}
+                    </td>
+                    <td>
+                        {% if book.copies_sold %}
+                            {{ book.copies_sold}}
+                        {% else %}
+                            No
+                        {% endif %}
+                        copies sold
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+    </table>
+{% endblock %}
