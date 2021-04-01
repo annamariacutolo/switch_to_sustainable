@@ -10,6 +10,7 @@ class Item(models.Model):
 class Product(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     text = models.CharField(max_length=200)
+    description = models.CharField()
     stock = models.PositiveIntegerField(default=0)
     price = models.PositiveIntegerField()
 
