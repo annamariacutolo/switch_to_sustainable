@@ -2,28 +2,29 @@
         "model": "pages.item",
         "pk": 1,
         "fields": {
-            "name": "Ursula K. Le Guin"
+            "name": "Toothbrush"
         }
     },
     {
         "model": "pages.item",
         "pk": 2,
         "fields": {
-            "name": "Charlotte Bront"
+            "name": "Straw"
         }
     },
     {
         "model": "pages.item",
         "pk": 3,
         "fields": {
-            "name": "Madeleine L'Engle"
+            "name": "Sanitary items"
         }
     },
     {
         "model": "pages.product",
         "pk": 1,
         "fields": {
-            "text": "The First Men in the Moon",
+            "text": "Bamboo toothbrush",
+            "item_id": "1",
             "description": "a",
             "stock": 0,
             "price": 5
@@ -33,7 +34,8 @@
         "model": "pages.product",
         "pk": 2,
         "fields": {
-            "text": "The First Men in the Moon",
+            "text": "Metal straw",
+            "item_id": "2",
             "description": "a",
             "stock": 0,
             "price": 5
@@ -43,7 +45,19 @@
         "model": "pages.product",
         "pk": 3,
         "fields": {
-            "text": "The First Men in the Moon",
+            "text": "Bamboo straw",
+            "item_id": "2",
+            "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 4,
+        "fields": {
+            "text": "Menstrual cup",
+            "item_id": "3",
             "description": "a",
             "stock": 0,
             "price": 5
