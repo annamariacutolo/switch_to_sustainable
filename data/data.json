@@ -20,6 +20,90 @@
         }
     },
     {
+        "model": "pages.item",
+        "pk": 4,
+        "fields": {
+            "name": "Make-up wipes"
+        }
+    },
+    {
+        "model": "pages.item",
+        "pk": 5,
+        "fields": {
+            "name": "Cotton buds"
+        }
+    },
+        {
+        "model": "pages.item",
+        "pk": 6,
+        "fields": {
+            "name": "Shower products including shampoo, condition and shower gel"
+        }
+    },
+    {
+        "model": "pages.item",
+        "pk": 7,
+        "fields": {
+            "name": "Disposable coffee cups"
+        }
+    },
+    {
+        "model": "pages.item",
+        "pk": 8,
+        "fields": {
+            "name": "Disposable cutlery"
+        }
+    },
+    {
+        "model": "pages.item",
+        "pk": 9,
+        "fields": {
+            "name": "Cling film"
+        }
+    },
+    {
+        "model": "pages.item",
+        "pk": 10,
+        "fields": {
+            "name": "Plastic shopping bags"
+        }
+    },
+    {
+        "model": "pages.item",
+        "pk": 11,
+        "fields": {
+            "name": "Plastic water bottles"
+        }
+    },
+    {
+        "model": "pages.item",
+        "pk": 12,
+        "fields": {
+            "name": "Paper filters for making coffee at home"
+        }
+    },
+    {
+        "model": "pages.item",
+        "pk": 13,
+        "fields": {
+            "name": "Dental floss"
+        }
+    },
+    {
+        "model": "pages.item",
+        "pk": 14,
+        "fields": {
+            "name": "Disposable razors"
+        }
+    },
+    {
+        "model": "pages.item",
+        "pk": 15,
+        "fields": {
+            "name": "Single use nappies"
+        }
+    },
+    {
         "model": "pages.product",
         "pk": 1,
         "fields": {
@@ -52,13 +136,255 @@
             "price": 5
         }
     },
-    {
+        {
         "model": "pages.product",
         "pk": 4,
+        "fields": {
+            "text": "Glass straw",
+            "item_id": "2",
+            "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 5,
         "fields": {
             "text": "Menstrual cup",
             "item_id": "3",
             "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 6,
+        "fields": {
+            "text": "Period pants",
+            "item_id": "3",
+            "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 7,
+        "fields": {
+            "text": "Reusible sanitary pad",
+            "item_id": "3",
+            "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 8,
+        "fields": {
+            "text": "Reusible tampon applicator",
+            "item_id": "3",
+            "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 9,
+        "fields": {
+            "text": "Reusible tampon applicator",
+            "item_id": "3",
+            "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 10,
+        "fields": {
+            "text": "Reusible make-up remover pads",
+            "item_id": "4",
+            "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 11,
+        "fields": {
+            "text": "Silicone alternative to cotton buds",
+            "item_id": "5",
+            "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 12,
+        "fields": {
+            "text": "Shampoo or conditioner bars",
+            "item_id": "6",
+            "description": "Super concentrated, less packaging waste",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 13,
+        "fields": {
+            "text": "Refill your existing bottles",
+            "item_id": "6",
+            "description": "Refill packs contain what you're used to and produce a lot less plastic waste",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 14,
+        "fields": {
+            "text": "Reusable coffee cup",
+            "item_id": "7",
+            "description": "KeepCups make a great option and you might even get money off your coffee!",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 15,
+        "fields": {
+            "text": "Bamboo cutlery",
+            "item_id": "8",
+            "description": "Often come with a case to keep them clean whilst inside your bag",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 16,
+        "fields": {
+            "text": "Metal cutlery",
+            "item_id": "8",
+            "description": "Often come with a case to keep them clean whilst inside your bag",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 17,
+        "fields": {
+            "text": "Beeswax wrap",
+            "item_id": "9",
+            "description": "reusable!",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 18,
+        "fields": {
+            "text": "Silicone stretch lids",
+            "item_id": "9",
+            "description": "Washable and reusable!",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 19,
+        "fields": {
+            "text": "Fabric reusable shopping or tote bags",
+            "item_id": "10",
+            "description": "Always keep one folded in your bag!",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 20,
+        "fields": {
+            "text": "Reusable hard plastic water bottles",
+            "item_id": "11",
+            "description": "Last ages!",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 21,
+        "fields": {
+            "text": "Reusable metal waterbottles",
+            "item_id": "11",
+            "description": "Some of these keep your water cool too, very useful in summer",
+            "stock": 0,
+            "price": 5
+        }
+    },
+        {
+        "model": "pages.product",
+        "pk": 22,
+        "fields": {
+            "text": "Stainless steel coffee filter",
+            "item_id": "12",
+            "description": "For drip coffee or aeropress",
+            "stock": 0,
+            "price": 5
+        }
+    },
+        {
+        "model": "pages.product",
+        "pk": 23,
+        "fields": {
+            "text": "Washable fabric coffee filter",
+            "item_id": "12",
+            "description": "These are only available for pourover coffee",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 24,
+        "fields": {
+            "text": "Refillable and compostable floss",
+            "item_id": "13",
+            "description": "Floss can be made of non-toxic, biodegradable materials",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 25,
+        "fields": {
+            "text": "Reusable razor handle with replaceable heads",
+            "item_id": "14",
+            "description": "Razors like these come in a variety of materials from stainless steel, to recycled plastic",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 26,
+        "fields": {
+            "text": "Reusable cloth nappies",
+            "item_id": "15",
+            "description": "They even reduce the liklihood of nappy rash",
             "stock": 0,
             "price": 5
         }
