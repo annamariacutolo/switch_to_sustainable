@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.auth import login, authenticate
 from .models import Item, Product
 from .forms import NewProductForm, NewUserForm
 
@@ -41,9 +42,8 @@ def register(request):
         form = NewUserForm(request.POST)
         if form.is_valid():
             form.save()
-        return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/')
     else:
         form = NewUserForm()
 
-    form = NewUserForm()
     return render(request, 'new_user.html', {'form': form})
