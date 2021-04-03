@@ -57,11 +57,11 @@ def new_product_form_two(request):
     # thinking if we could somehow get the id using this if we create a new instace of Item first?
     single_use_product = form.cleaned_data['name']
     # information for adding a new product
-    replacement = form.cleaned_data['text']
+    replacement = form.cleaned_data['product_name']
     description = form.cleaned_data['description']
 
     # adding the sustainable product to the database
-    new_product = Product(text = replacement, description = description, item_id = 1)
+    new_product = Product(name = replacement, description = description, item_id = 1)
     new_product.save()
 
     return HttpResponse('Thank you for your suggestion.')

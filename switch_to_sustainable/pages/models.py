@@ -9,13 +9,13 @@ class Item(models.Model):
 
 class Product(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    text = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     description = models.CharField(max_length=300, null=True)
     stock = models.PositiveIntegerField(default=0)
     price = models.PositiveIntegerField(default=0)
     
     def __str__(self):
-        return f'{self.text}'
+        return f'{self.name}'
 
 class NewProduct(models.Model):
     name = models.CharField(max_length=200)

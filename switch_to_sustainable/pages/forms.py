@@ -8,7 +8,7 @@ class NewProductForm(forms.Form):
 
 class NewProductFormTwo(forms.Form):
     name = forms.CharField(max_length=200)
-    text = forms.CharField(max_length=200)
+    product_name = forms.CharField(max_length=200)
     description = forms.CharField(max_length=400)
 
 class NewUserForm(UserCreationForm):
