@@ -6,6 +6,11 @@ from django.contrib.auth.models import User
 class NewProductForm(forms.Form):
     name = forms.CharField(max_length=200)
 
+class NewProductFormTwo(forms.Form):
+    name = forms.CharField(max_length=200)
+    text = forms.CharField(max_length=200)
+    description = forms.CharField(max_length=400)
+
 class NewUserForm(UserCreationForm):
     email = forms.EmailField()
     

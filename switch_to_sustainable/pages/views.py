@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from .models import Item, Product, NewProduct
-from .forms import NewProductForm, NewUserForm
+from .forms import NewProductForm, NewUserForm, NewProductFormTwo
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -39,6 +39,31 @@ def new_product_form(request):
     product.save()
 
     return HttpResponse('Thank you for your suggestion.')
+
+
+
+
+def new_product_form_two(request):
+    if request.method == 'GET':
+        form = NewProductFormTwo()
+        return render(request, 'new_product_two.html', {'form': form})
+
+    form = NewProductFormTwo(request.POST)
+    if not form.is_valid():
+        return render(request, 'new_product_two.html', {'form': form})
+
+    single_use_product = form.cleaned_data['name']
+    replacement = form.cleaned_data['text']
+    description = form.cleaned_data['description']
+
+
+    new_product = Product(text = replacement, description = description, item_id = 1)
+    new_product.save()
+
+    return HttpResponse('Thank you for your suggestion.')
+
+   
+
 
 def register(request):
     if request.method == 'POST':
