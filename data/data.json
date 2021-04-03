@@ -107,7 +107,7 @@
         "model": "pages.product",
         "pk": 1,
         "fields": {
-            "text": "Bamboo toothbrush",
+            "name": "Bamboo toothbrush",
             "item_id": "1",
             "description": "a",
             "stock": 0,
@@ -118,7 +118,7 @@
         "model": "pages.product",
         "pk": 2,
         "fields": {
-            "text": "Metal straws",
+            "name": "Metal straws",
             "item_id": "2",
             "description": "a",
             "stock": 0,
@@ -129,7 +129,7 @@
         "model": "pages.product",
         "pk": 3,
         "fields": {
-            "text": "Bamboo straws",
+            "name": "Bamboo straws",
             "item_id": "2",
             "description": "a",
             "stock": 0,
@@ -140,7 +140,7 @@
         "model": "pages.product",
         "pk": 4,
         "fields": {
-            "text": "Glass straws",
+            "name": "Glass straws",
             "item_id": "2",
             "description": "a",
             "stock": 0,
@@ -151,7 +151,7 @@
         "model": "pages.product",
         "pk": 5,
         "fields": {
-            "text": "Menstrual cup",
+            "name": "Menstrual cup",
             "item_id": "3",
             "description": "a",
             "stock": 0,
@@ -162,7 +162,7 @@
         "model": "pages.product",
         "pk": 6,
         "fields": {
-            "text": "Period pants",
+            "name": "Period pants",
             "item_id": "3",
             "description": "a",
             "stock": 0,
@@ -173,7 +173,7 @@
         "model": "pages.product",
         "pk": 7,
         "fields": {
-            "text": "Reusable sanitary pad",
+            "name": "Reusable sanitary pad",
             "item_id": "3",
             "description": "a",
             "stock": 0,
@@ -184,7 +184,7 @@
         "model": "pages.product",
         "pk": 8,
         "fields": {
-            "text": "Reusable tampon applicator",
+            "name": "Reusable tampon applicator",
             "item_id": "3",
             "description": "a",
             "stock": 0,
@@ -195,7 +195,7 @@
         "model": "pages.product",
         "pk": 10,
         "fields": {
-            "text": "Reusable make-up remover pads",
+            "name": "Reusable make-up remover pads",
             "item_id": "4",
             "description": "a",
             "stock": 0,
@@ -206,7 +206,7 @@
         "model": "pages.product",
         "pk": 11,
         "fields": {
-            "text": "Silicone alternative to cotton buds",
+            "name": "Silicone alternative to cotton buds",
             "item_id": "5",
             "description": "a",
             "stock": 0,
@@ -217,7 +217,7 @@
         "model": "pages.product",
         "pk": 12,
         "fields": {
-            "text": "Shampoo or conditioner bars",
+            "name": "Shampoo or conditioner bars",
             "item_id": "6",
             "description": "Super concentrated, less packaging waste",
             "stock": 0,
@@ -228,7 +228,7 @@
         "model": "pages.product",
         "pk": 13,
         "fields": {
-            "text": "Refill your existing bottles",
+            "name": "Refill your existing bottles",
             "item_id": "6",
             "description": "Refill packs contain what you're used to and produce a lot less plastic waste",
             "stock": 0,
@@ -239,7 +239,7 @@
         "model": "pages.product",
         "pk": 14,
         "fields": {
-            "text": "Reusable coffee cup",
+            "name": "Reusable coffee cup",
             "item_id": "7",
             "description": "KeepCups make a great option and you might even get money off your coffee!",
             "stock": 0,
@@ -250,7 +250,7 @@
         "model": "pages.product",
         "pk": 15,
         "fields": {
-            "text": "Bamboo cutlery",
+            "name": "Bamboo cutlery",
             "item_id": "8",
             "description": "Often come with a case to keep them clean whilst inside your bag",
             "stock": 0,
@@ -261,7 +261,7 @@
         "model": "pages.product",
         "pk": 16,
         "fields": {
-            "text": "Metal cutlery",
+            "name": "Metal cutlery",
             "item_id": "8",
             "description": "Often come with a case to keep them clean whilst inside your bag",
             "stock": 0,
@@ -272,7 +272,7 @@
         "model": "pages.product",
         "pk": 17,
         "fields": {
-            "text": "Beeswax wrap",
+            "name": "Beeswax wrap",
             "item_id": "9",
             "description": "reusable!",
             "stock": 0,
@@ -283,7 +283,7 @@
         "model": "pages.product",
         "pk": 18,
         "fields": {
-            "text": "Silicone stretch lids",
+            "name": "Silicone stretch lids",
             "item_id": "9",
             "description": "Washable and reusable!",
             "stock": 0,
@@ -294,7 +294,7 @@
         "model": "pages.product",
         "pk": 19,
         "fields": {
-            "text": "Fabric reusable shopping or tote bags",
+            "name": "Fabric reusable shopping or tote bags",
             "item_id": "10",
             "description": "Always keep one folded in your bag!",
             "stock": 0,
@@ -305,7 +305,7 @@
         "model": "pages.product",
         "pk": 20,
         "fields": {
-            "text": "Reusable hard plastic water bottles",
+            "name": "Reusable hard plastic water bottles",
             "item_id": "11",
             "description": "Last ages!",
             "stock": 0,
@@ -316,7 +316,7 @@
         "model": "pages.product",
         "pk": 21,
         "fields": {
-            "text": "Stainless steel water bottles",
+            "name": "Stainless steel water bottles",
             "item_id": "11",
             "description": "Some of these keep your water cool too, very useful in summer",
             "stock": 0,
@@ -327,7 +327,7 @@
         "model": "pages.product",
         "pk": 22,
         "fields": {
-            "text": "Stainless steel coffee filter",
+            "name": "Stainless steel coffee filter",
             "item_id": "12",
             "description": "For drip coffee or aeropress",
             "stock": 0,
@@ -338,7 +338,7 @@
         "model": "pages.product",
         "pk": 23,
         "fields": {
-            "text": "Washable fabric coffee filter",
+            "name": "Washable fabric coffee filter",
             "item_id": "12",
             "description": "These are only available for pourover coffee",
             "stock": 0,
@@ -349,7 +349,7 @@
         "model": "pages.product",
         "pk": 24,
         "fields": {
-            "text": "Refillable and compostable floss",
+            "name": "Refillable and compostable floss",
             "item_id": "13",
             "description": "Floss can be made of non-toxic, biodegradable materials",
             "stock": 0,
@@ -360,7 +360,7 @@
         "model": "pages.product",
         "pk": 25,
         "fields": {
-            "text": "Reusable razor handle with replaceable heads",
+            "name": "Reusable razor handle with replaceable heads",
             "item_id": "14",
             "description": "Razors like these come in a variety of materials from stainless steel, to recycled plastic",
             "stock": 0,
@@ -371,7 +371,7 @@
         "model": "pages.product",
         "pk": 26,
         "fields": {
-            "text": "Reusable cloth nappies",
+            "name": "Reusable cloth nappies",
             "item_id": "15",
             "description": "They even reduce the likelihood of nappy rash",
             "stock": 0,
