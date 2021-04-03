@@ -20,7 +20,7 @@ def products(request):
     return render(request, 'products.html', context)
 
 def new_product_form(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         form = NewProductForm()
         return render(request, 'new_product.html', {'form': form})
 
@@ -31,15 +31,14 @@ def new_product_form(request):
     name = form.cleaned_data['name']
 
     if Product.objects.filter(name=name):
-        messages.warning(request, f'Product {name} already on our website')
+        messages.warning(request, f'Product "{name}" already on our website.')
         return render(request, 'new_product.html', {'form': form})
 
     product = NewProduct(name=name)
     product.save()
-
-    return HttpResponse('Thank you for your suggestion.')
-
-
+    
+    messages.success(request, f'Thank you for your suggestion: "{name}".')
+    return HttpResponseRedirect('/new_product')
 
 
 def new_product_form_two(request):
@@ -73,7 +72,7 @@ def register(request):
         form = NewUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/accounts/login')
     else:
         form = NewUserForm()
 

@@ -23,15 +23,15 @@
             {% endif %}
         </ul>
     </div>
-    {% if messages %}
-    <ul class="messages">
+    {% block body %} {% endblock %} {% if messages %}
+    <div class="messages">
         {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
+        <p{% if message.tags %} class="{{ message.tags }}" {% endif %}>
             {{ message }}
-            </li>
+            </p>
             {% endfor %}
-    </ul>
-    {% endif %} {% block body %} {% endblock %}
+    </div>
+    {% endif %}
 </body>
 
 </html>
