@@ -151,8 +151,8 @@
         "model": "pages.product",
         "pk": 5,
         "fields": {
-            "name": "Menstrual cup",
-            "item_id": "3",
+            "name": "Silicone straws",
+            "item_id": "2",
             "description": "a",
             "stock": 0,
             "price": 5
@@ -162,7 +162,7 @@
         "model": "pages.product",
         "pk": 6,
         "fields": {
-            "name": "Period pants",
+            "name": "Menstrual cup",
             "item_id": "3",
             "description": "a",
             "stock": 0,
@@ -173,7 +173,7 @@
         "model": "pages.product",
         "pk": 7,
         "fields": {
-            "name": "Reusable sanitary pad",
+            "name": "Period pants",
             "item_id": "3",
             "description": "a",
             "stock": 0,
@@ -183,6 +183,17 @@
     {
         "model": "pages.product",
         "pk": 8,
+        "fields": {
+            "name": "Reusable sanitary pad",
+            "item_id": "3",
+            "description": "a",
+            "stock": 0,
+            "price": 5
+        }
+    },
+    {
+        "model": "pages.product",
+        "pk": 9,
         "fields": {
             "name": "Reusable tampon applicator",
             "item_id": "3",
