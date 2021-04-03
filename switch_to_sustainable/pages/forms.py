@@ -7,7 +7,8 @@ class NewProductForm(forms.Form):
     name = forms.CharField(max_length=200)
 
 class NewUserForm(UserCreationForm):
+    email = forms.EmailField()
     
     class Meta:
         model = User
-        fields = ["username", "password1", "password2"]
+        fields = ["username", "email", "password1", "password2"]

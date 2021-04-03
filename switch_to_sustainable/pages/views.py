@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
-from .models import Item, Product
+from .models import Item, Product, NewProduct
 from .forms import NewProductForm, NewUserForm
 
 
@@ -32,10 +32,10 @@ def new_product_form(request):
         messages.warning(request, f'Product {name} already on our website')
         return render(request, 'new_product.html', {'form': form})
 
-    # product = Product(name=name)
-    # product.save()
+    product = NewProduct(name=name)
+    product.save()
 
-    return HttpResponseRedirect('products')
+    return HttpResponse('Thank you for your suggestion.')
 
 def register(request):
     if request.method == 'POST':

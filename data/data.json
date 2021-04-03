@@ -9,7 +9,7 @@
         "model": "pages.item",
         "pk": 2,
         "fields": {
-            "name": "Straw"
+            "name": "Straws"
         }
     },
     {
@@ -33,11 +33,11 @@
             "name": "Cotton buds"
         }
     },
-        {
+    {
         "model": "pages.item",
         "pk": 6,
         "fields": {
-            "name": "Shower products including shampoo, condition and shower gel"
+            "name": "Shower products including shampoo, conditioner and shower gel"
         }
     },
     {
@@ -79,7 +79,7 @@
         "model": "pages.item",
         "pk": 12,
         "fields": {
-            "name": "Paper filters for making coffee at home"
+            "name": "Paper coffee filters"
         }
     },
     {
@@ -100,7 +100,7 @@
         "model": "pages.item",
         "pk": 15,
         "fields": {
-            "name": "Single use nappies"
+            "name": "Single-use nappies"
         }
     },
     {
@@ -118,7 +118,7 @@
         "model": "pages.product",
         "pk": 2,
         "fields": {
-            "text": "Metal straw",
+            "text": "Metal straws",
             "item_id": "2",
             "description": "a",
             "stock": 0,
@@ -129,18 +129,18 @@
         "model": "pages.product",
         "pk": 3,
         "fields": {
-            "text": "Bamboo straw",
+            "text": "Bamboo straws",
             "item_id": "2",
             "description": "a",
             "stock": 0,
             "price": 5
         }
     },
-        {
+    {
         "model": "pages.product",
         "pk": 4,
         "fields": {
-            "text": "Glass straw",
+            "text": "Glass straws",
             "item_id": "2",
             "description": "a",
             "stock": 0,
@@ -173,7 +173,7 @@
         "model": "pages.product",
         "pk": 7,
         "fields": {
-            "text": "Reusible sanitary pad",
+            "text": "Reusable sanitary pad",
             "item_id": "3",
             "description": "a",
             "stock": 0,
@@ -184,18 +184,7 @@
         "model": "pages.product",
         "pk": 8,
         "fields": {
-            "text": "Reusible tampon applicator",
-            "item_id": "3",
-            "description": "a",
-            "stock": 0,
-            "price": 5
-        }
-    },
-    {
-        "model": "pages.product",
-        "pk": 9,
-        "fields": {
-            "text": "Reusible tampon applicator",
+            "text": "Reusable tampon applicator",
             "item_id": "3",
             "description": "a",
             "stock": 0,
@@ -206,7 +195,7 @@
         "model": "pages.product",
         "pk": 10,
         "fields": {
-            "text": "Reusible make-up remover pads",
+            "text": "Reusable make-up remover pads",
             "item_id": "4",
             "description": "a",
             "stock": 0,
@@ -327,14 +316,14 @@
         "model": "pages.product",
         "pk": 21,
         "fields": {
-            "text": "Reusable metal waterbottles",
+            "text": "Stainless steel water bottles",
             "item_id": "11",
             "description": "Some of these keep your water cool too, very useful in summer",
             "stock": 0,
             "price": 5
         }
     },
-        {
+    {
         "model": "pages.product",
         "pk": 22,
         "fields": {
@@ -345,7 +334,7 @@
             "price": 5
         }
     },
-        {
+    {
         "model": "pages.product",
         "pk": 23,
         "fields": {
