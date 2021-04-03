@@ -4,6 +4,9 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from .models import Item, Product, NewProduct
 from .forms import NewProductForm, NewUserForm
+from django.shortcuts import get_object_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -47,3 +50,21 @@ def register(request):
         form = NewUserForm()
 
     return render(request, 'new_user.html', {'form': form})
+
+
+class ListProductsForItems(APIView):
+    def get(self, request, format=None):
+        item_id = request.GET.get('item_id')
+        get_object_or_404(Item, pk=item_id)
+
+        products = [
+            {
+                'text': product.text,
+                'description': product.description,
+                'stock': product.stock,
+                'price': product.price
+            }
+            for product in Product.objects.filter(item_id=item_id)
+        ]
+        print(products)
+        return Response(products)
