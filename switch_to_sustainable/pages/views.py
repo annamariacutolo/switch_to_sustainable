@@ -1,10 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from .models import Item, Product, NewProduct
 from .forms import NewProductForm, NewUserForm, NewProductFormTwo
-from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -88,12 +87,11 @@ class ListProductsForItems(APIView):
 
         products = [
             {
-                'text': product.text,
+                'name': product.name,
                 'description': product.description,
                 'stock': product.stock,
                 'price': product.price
             }
             for product in Product.objects.filter(item_id=item_id)
         ]
-        print(products)
         return Response(products)

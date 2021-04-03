@@ -6,11 +6,11 @@ function show_new_product_list(products) {
     } else {
         let product_list_items = '';
         products.forEach(function(product) {
-            product_list_items += '<li>' + product.text + 
-                                    '<ul> '+
-                                        '<li>' + product.description + '</li>' +
-                                    '</ul>' +
-                                    '</li>'
+            product_list_items += '<li>' + product.name +
+                '<ul> ' +
+                '<li>' + product.description + '</li>' +
+                '</ul>' +
+                '</li>'
         })
         product_list_element.innerHTML = '<ul>\n' + product_list_items + '</ul>\n'
     }
