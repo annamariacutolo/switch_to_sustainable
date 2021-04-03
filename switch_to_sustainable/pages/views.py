@@ -44,6 +44,8 @@ def new_product_form(request):
 
 
 def new_product_form_two(request):
+    # i think this methods only works with GET here, if its post i think it keeps looping round this 
+    # and continually just displaying the form on the page
     if request.method == 'GET':
         form = NewProductFormTwo()
         return render(request, 'new_product_two.html', {'form': form})
@@ -51,12 +53,14 @@ def new_product_form_two(request):
     form = NewProductFormTwo(request.POST)
     if not form.is_valid():
         return render(request, 'new_product_two.html', {'form': form})
-
+    
+    # thinking if we could somehow get the id using this if we create a new instace of Item first?
     single_use_product = form.cleaned_data['name']
+    # information for adding a new product
     replacement = form.cleaned_data['text']
     description = form.cleaned_data['description']
 
-
+    # adding the sustainable product to the database
     new_product = Product(text = replacement, description = description, item_id = 1)
     new_product.save()
 
