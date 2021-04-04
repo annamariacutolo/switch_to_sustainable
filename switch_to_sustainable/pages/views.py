@@ -34,7 +34,7 @@ def new_product_form(request):
     if not form.is_valid():
         return render(request, 'new_product.html', {'form': form})
 
-    single_use_product = form.cleaned_data['item_name']
+    single_use_product = form.cleaned_data['item_name'].lower().capitalize()
     replacement = form.cleaned_data['product_name']
     description = form.cleaned_data['description']
 
@@ -110,6 +110,7 @@ def register(request):
         form = NewUserForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, f'Registration successful.')
             return HttpResponseRedirect('/accounts/login')
     else:
         form = NewUserForm()
@@ -131,4 +132,5 @@ class ListProductsForItems(APIView):
             }
             for product in Product.objects.filter(item_id=item_id)
         ]
+        #print(products)
         return Response(products)
