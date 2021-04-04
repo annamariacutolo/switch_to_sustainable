@@ -1,10 +1,18 @@
 {% extends "base.html" %} {% load static %} {% block title %}Suggestions{% endblock %} {% block body %}
 
-<h2>Suggest a product for our website</h2>
+<h2>Suggest a product for our website:</h2>
 <form action="" method="post">
     {% csrf_token %}
     <div>
-        {{ form.name }}
+        <p>Product name:</p>
+        {{ form.product_name }}
+
+        <p>Description:</p>
+        {{ form.description}}
+
+        <p>What item does this product replace?</p>
+        {{ form.item_name }}
+
         <button type="submit">Submit</button>
     </div>
 </form>

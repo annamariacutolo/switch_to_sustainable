@@ -14,15 +14,17 @@ class Product(models.Model):
     description = models.CharField(max_length=300, null=True)
     stock = models.PositiveIntegerField(default=0)
     price = models.PositiveIntegerField(default=0)
+    is_approved = models.BooleanField(default=False)
     
     def __str__(self):
         return self.name
 
-class NewProduct(models.Model):
-    name = models.CharField(max_length=200)
+# class NewProduct(models.Model):
+#     name = models.CharField(max_length=200)
+#     is_approved = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 # class User(models.Model):
 #     first_name = models.CharField(max_length=200)

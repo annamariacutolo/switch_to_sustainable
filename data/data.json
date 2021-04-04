@@ -111,7 +111,8 @@
             "item_id": "1",
             "description": "a",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -122,7 +123,8 @@
             "item_id": "2",
             "description": "a",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -133,7 +135,8 @@
             "item_id": "2",
             "description": "a",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -144,7 +147,8 @@
             "item_id": "2",
             "description": "a",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -155,7 +159,8 @@
             "item_id": "2",
             "description": "a",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -166,7 +171,8 @@
             "item_id": "3",
             "description": "a",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -177,7 +183,8 @@
             "item_id": "3",
             "description": "a",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -188,7 +195,8 @@
             "item_id": "3",
             "description": "a",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -199,7 +207,8 @@
             "item_id": "3",
             "description": "a",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -210,7 +219,8 @@
             "item_id": "4",
             "description": "a",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -221,7 +231,8 @@
             "item_id": "5",
             "description": "a",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -232,7 +243,8 @@
             "item_id": "6",
             "description": "Super concentrated, less packaging waste",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -243,7 +255,8 @@
             "item_id": "6",
             "description": "Refill packs contain what you're used to and produce a lot less plastic waste",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -254,7 +267,8 @@
             "item_id": "7",
             "description": "KeepCups make a great option and you might even get money off your coffee!",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -265,7 +279,8 @@
             "item_id": "8",
             "description": "Often come with a case to keep them clean whilst inside your bag",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -276,7 +291,8 @@
             "item_id": "8",
             "description": "Often come with a case to keep them clean whilst inside your bag",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -287,7 +303,8 @@
             "item_id": "9",
             "description": "reusable!",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -298,7 +315,8 @@
             "item_id": "9",
             "description": "Washable and reusable!",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -309,7 +327,8 @@
             "item_id": "10",
             "description": "Always keep one folded in your bag!",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -320,7 +339,8 @@
             "item_id": "11",
             "description": "Last ages!",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -331,7 +351,8 @@
             "item_id": "11",
             "description": "Some of these keep your water cool too, very useful in summer",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -342,7 +363,8 @@
             "item_id": "12",
             "description": "For drip coffee or aeropress",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -353,7 +375,8 @@
             "item_id": "12",
             "description": "These are only available for pourover coffee",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -364,7 +387,8 @@
             "item_id": "13",
             "description": "Floss can be made of non-toxic, biodegradable materials",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -375,7 +399,8 @@
             "item_id": "14",
             "description": "Razors like these come in a variety of materials from stainless steel, to recycled plastic",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     },
     {
@@ -386,7 +411,8 @@
             "item_id": "15",
             "description": "They even reduce the likelihood of nappy rash",
             "stock": 0,
-            "price": 5
+            "price": 5,
+            "is_approved": true
         }
     }
 ]

@@ -1,28 +1,18 @@
-{% extends "base.html" %} 
-{% load static %} 
+{% extends "base.html" %} {% load static %} {% block title %}Find sustainable products{% endblock %} {% block extra_header_contents %}
+<script src="{% static 'pages/products_for_item.js' %}"></script>
+{% endblock %} {% block body %}
+<h2>Find alternative eco-friendly products</h2>
 
-{% block title %}Find sustainable products{% endblock %} 
-
-{% block extra_header_contents %}
-    <script src="{% static 'pages/products_for_item.js' %}"></script>
-{% endblock %} 
-
-{% block body %}
-    <h2>Find alternative eco-friendly products</h2>
-
-    <select id="item_id">
+<select id="item_id">
             <option value="-1">Select an item:</option>
         {% for item in items %}
             <option value="{{ item.id }}">{{ item.name }}</option>
         {% endfor %}
         </select>
 
-    <hr>
+<hr>
 
 <div id="products">
     <p>No products found.</p>
 </div>
-
-   <!-- <div id="product_list"><p>(No products found. Select an author)</p></div>
-   -->
 {% endblock %}
