@@ -19,6 +19,8 @@ def products(request):
     }
     return render(request, 'products.html', context)
 
+
+
 def new_product_form(request):
     if request.method == 'GET':
         form = NewProductForm()
@@ -58,11 +60,31 @@ def new_product_form_two(request):
     replacement = form.cleaned_data['product_name']
     description = form.cleaned_data['description']
 
-    # adding the sustainable product to the database
-    new_product = Product(name = replacement, description = description, item_id = 1)
+    if Item.objects.filter(name = single_use_product):
+        # get id of the item that the product could be used instead of
+        item = Item.objects.filter(name = single_use_product).first()
+        item_id = item.id
+
+        # check if product already exists under that item, otherwise add it
+        if Product.objects.filter(name = replacement, item_id = item_id):
+            messages.warning(request, f'Product "{replacement}" for {single_use_product} already on our website.')
+            return render(request, 'new_product_two.html', {'form': form})
+
+        # adding product for the item which already exists on the databases
+        new_product = Product(name = replacement, description = description, item_id = item_id)
+        new_product.save()
+        messages.success(request, f'Thank you for your suggestion: "{replacement}", we will review whether it replaces {single_use_product} and then add it to our database.')
+        return render(request, 'new_product_two.html', {'form': form})
+
+    # adding the sustainable product to the database if the item doesn't already exist
+    # make new instance of item since it doesn't exist
+    item = Item(name = single_use_product)
+    item.save()
+    item_id = item.id
+    new_product = Product(name = replacement, description = description, item_id = item_id)
     new_product.save()
 
-    return HttpResponse('Thank you for your suggestion.')
+    return HttpResponse('Thank you for your suggestion we will review it then add it to our database.')
 
    
 
