@@ -137,7 +137,7 @@ class ListProductsForItems(APIView):
                 'stock': product.stock,
                 'price': product.price
             }
-            for product in Product.objects.filter(item_id=item_id)
+            for product in Product.objects.filter(item_id=item_id, is_approved=True)
         ]
         #print(products)
         return Response(products)
