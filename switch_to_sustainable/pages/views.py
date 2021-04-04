@@ -7,7 +7,7 @@ from .models import Item, Product
 from .forms import NewProductForm, NewUserForm
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+import re
 
 # Create your views here.
 def home(request):
@@ -19,7 +19,7 @@ def products(request):
     for product in product_list:
         if not product.item in items:
             items.append(product.item)
-    print(product_list)
+    #print(product_list)
     context = {
         'items': items,
     }
@@ -37,6 +37,8 @@ def new_product_form(request):
 
     #  should we do .strip() on these ?
     single_use_product = form.cleaned_data['item_name'].lower().capitalize()
+    #print("before single use is: " + single_use_product)
+    single_use_product = check_for_match(single_use_product)
     replacement = form.cleaned_data['product_name'].lower().capitalize()
     description = form.cleaned_data['description']
 
@@ -141,3 +143,18 @@ class ListProductsForItems(APIView):
         ]
         #print(products)
         return Response(products)
+
+
+def check_for_match(string):
+    item_list_names = Item.objects.filter().all()
+    print(item_list_names)
+
+    string2 = string + "s"
+
+    for item in item_list_names:
+        if item.name == string2:
+            return item.name
+        elif item.name == string:
+            return item.name
+
+    return string
