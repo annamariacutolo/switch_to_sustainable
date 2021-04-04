@@ -14,11 +14,12 @@ def home(request):
     return render(request, 'home.html')
 
 def products(request):
-    product_list = Product.objects.filter(is_approved=True)
+    product_list = Product.objects.filter(is_approved=True).all()
     items = []
     for product in product_list:
         if not product.item in items:
             items.append(product.item)
+    print(product_list)
     context = {
         'items': items,
     }
@@ -34,10 +35,12 @@ def new_product_form(request):
     if not form.is_valid():
         return render(request, 'new_product.html', {'form': form})
 
+    #  should we do .strip() on these ?
     single_use_product = form.cleaned_data['item_name'].lower().capitalize()
-    replacement = form.cleaned_data['product_name']
+    replacement = form.cleaned_data['product_name'].lower().capitalize()
     description = form.cleaned_data['description']
 
+    # apparently if checking if it exists then it is more efficient to use .exists()
     if Item.objects.filter(name = single_use_product):
         item = Item.objects.filter(name = single_use_product).first()
         item_id = item.id
@@ -46,7 +49,11 @@ def new_product_form(request):
             messages.warning(request, f'Product "{replacement}" for {single_use_product} already on our website.')
             return render(request, 'new_product.html', {'form': form})
 
-        new_product = Product(name = replacement, description = description, item_id = item_id)
+        if Product.objects.filter(name = replacement, item_id = item_id, is_approved=False):
+            messages.warning(request, f'We are already reviewing the product "{replacement}" for use instead of {single_use_product}, but thanks for your suggestion!')
+            return render(request, 'new_product.html', {'form': form})
+
+        new_product = Product(name = replacement, description = description, item_id = item_id, is_approved=False)
         new_product.save()
         messages.success(request, f'Thank you for your suggestion: "{replacement}". We will review whether it replaces {single_use_product} and then add it to our website.')
         return render(request, 'new_product.html', {'form': form})
