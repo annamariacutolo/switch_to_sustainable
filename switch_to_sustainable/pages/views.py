@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 from .models import Item, Product, NewProduct
 from .forms import NewProductForm, NewUserForm, NewProductFormTwo
 from rest_framework.views import APIView
@@ -42,7 +43,7 @@ def new_product_form(request):
     messages.success(request, f'Thank you for your suggestion: "{name}".')
     return HttpResponseRedirect('/new_product')
 
-
+@login_required
 def new_product_form_two(request):
     # i think this methods only works with GET here, if its post i think it keeps looping round this 
     # and continually just displaying the form on the page
