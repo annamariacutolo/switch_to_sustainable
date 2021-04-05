@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block title %}Cart{% endblock %} {% block body %}
+<h2>Shopping Basket</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <div>
+        <!-- {{ form.name }} -->
+
+
+        <button type="submit"><a href="{% url 'checkout' %}">Checkout</a></button>
+    </div>
+</form>
+{% endblock %}
