@@ -9,6 +9,7 @@ function show_new_product_list(products) {
             product_list_items += '<li>' + product.name +
                 '<ul> ' +
                 '<li>' + product.description + '</li>' +
+                '<li>' + '£' + product.price + '</li>' +
                 '</ul>' +
                 '</li>'
         })
