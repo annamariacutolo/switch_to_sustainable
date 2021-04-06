@@ -8,6 +8,7 @@ from .models import Item, Product, OrderProduct, Order, Customer
 from .forms import NewProductForm, NewUserForm
 from rest_framework.views import APIView
 from rest_framework.response import Response
+import json
 
 import json
 
@@ -125,7 +126,10 @@ def cart(request):
         customer, created = Customer.objects.get_or_create(user=request.user)
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        products = {}
+        products = order.orderproduct_set.all()
+
+        for product in products:
+            order.products.add(product)
 
         context = {'products': products, 'order': order}
         return render(request, 'cart.html', context)
@@ -137,7 +141,11 @@ def cart(request):
 def checkout(request):
     customer = request.user.customer
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
-    products = order.orderproducts.all()
+    products = order.orderproduct_set.all()
+
+    # dont know if we need this here too
+    # for product in products:
+    #         order.products.add(product)
 
     context = {'products': products, 'order': order}
     return render(request, 'checkout.html', context)
@@ -158,14 +166,14 @@ def update_item(request):
 
     orderProduct, created = OrderProduct.objects.get_or_create(order=order, product=product)
     
-    #if action == 'add':
-    #    orderProduct.quantity = (orderProduct.quantity + 1)
-    #elif action == 'remove':
-    #    orderProduct.quantity = (orderProduct.quantity - 1)
+    # if action == 'add':
+    #     orderProduct.quantity = (orderProduct.quantity + 1)
+    # elif action == 'remove':
+    #     orderProduct.quantity = (orderProduct.quantity - 1)
     
     # orderProduct.save()
 
-    #if orderProduct.quantity <= 0:
-    #    orderProduct.delete()
+    # if orderProduct.quantity <= 0:
+    #     orderProduct.delete()
 
     return JsonResponse('item added', safe=False)

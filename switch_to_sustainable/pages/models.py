@@ -21,19 +21,6 @@ class Product(models.Model):
         return self.name
 
 
-class OrderProduct(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    quantity = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.product.name
-
-    @property
-    def get_total(self):
-        total = self.product.price * self.quantity
-        return total
-
-
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=200)
@@ -58,35 +45,52 @@ class Customer(models.Model):
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
-    products = models.ManyToManyField(OrderProduct) #related_name = 'orderproducts'
+    products = models.ManyToManyField('OrderProduct', related_name='orderproducts')
     order_date = models.DateTimeField(null=True)
     complete = models.BooleanField(default=False)
     order_id = models.CharField(max_length=200, null=True)
 
     def __str__(self):
-        return str(self.id) 
+        return self.order_id
 
-    #@property
-    #def get_cart_total(self):
-    #    orderproductlist = self.orderproducts.all()
-    #    total = sum([product.get_total for product in orderproductlist])
-    #    return total
+    @property
+    def get_cart_total(self):
+        orderproducts = self.orderproduct_set.all()
+        total = sum([product.get_total for product in orderproducts])
+        return total
 
-    #@property
-    #def get_cart_items(self):
-    #    orderproductlist = self.orderproducts.all()
-    #    total = sum([product.quantity for product in orderproductlist])
-    #    return total
+    @property
+    def get_cart_items(self):
+        orderproducts = self.orderproduct_set.all()
+        total = sum([product.quantity for product in orderproducts])
+        return total
 
 
-#class Shipping(models.Model):
-    #customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
-    #order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
-    #address = models.CharField(max_length=200)
-    #city = models.CharField(max_length=200)
-    #state = models.CharField(max_length=200)
-    #postcode = models.CharField(max_length=20)
+class OrderProduct(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    quantity = models.IntegerField(default=1)
 
-   # def __str__(self):
-    #    return self.address
+    class Meta:
+        unique_together = ('order', 'product')
+
+    def __str__(self):
+        return self.product.name
+
+    @property
+    def get_total(self):
+        total = self.product.price * self.quantity
+        return total
+
+
+# class Shipping(models.Model):
+#     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
+#     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+#     address = models.CharField(max_length=200)
+#     city = models.CharField(max_length=200)
+#     state = models.CharField(max_length=200)
+#     postcode = models.CharField(max_length=20)
+
+#     def __str__(self):
+#         return self.address
         

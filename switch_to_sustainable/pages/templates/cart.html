@@ -12,11 +12,9 @@
     </div>
     {% endfor %}
     <div>
-<!--
         <h3>Products: {{ order.get_cart_items }}</h3>
         <h3>Total: £{{ order.get_cart_total|floatformat:2 }}</h3>
     </div>
--->
 
     <button type="submit"><a href="{% url 'checkout' %}">Checkout</a></button>
     <button type="submit"><a href="{% url 'products' %}">Continue shopping</a></button>
