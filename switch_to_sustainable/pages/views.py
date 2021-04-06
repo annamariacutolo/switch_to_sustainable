@@ -4,11 +4,11 @@ from django.contrib import messages, admin
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Item, Product, OrderProduct, Order, Customer, Shipping
+from .models import Item, Product, OrderProduct, Order, Customer
 from .forms import NewProductForm, NewUserForm
 from rest_framework.views import APIView
 from rest_framework.response import Response
-import re
+
 import json
 
 
@@ -125,7 +125,7 @@ def cart(request):
         customer, created = Customer.objects.get_or_create(user=request.user)
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        products = order.orderproduct_set.all()
+        products = {}
 
         context = {'products': products, 'order': order}
         return render(request, 'cart.html', context)
@@ -137,7 +137,7 @@ def cart(request):
 def checkout(request):
     customer = request.user.customer
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
-    products = order.orderproduct_set.all()
+    products = order.orderproducts.all()
 
     context = {'products': products, 'order': order}
     return render(request, 'checkout.html', context)
@@ -151,19 +151,21 @@ def update_item(request):
     print('product', productId)
 
     customer = request.user.customer
+    
     product = Product.objects.get(id=productId)
+    print(product)
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
     orderProduct, created = OrderProduct.objects.get_or_create(order=order, product=product)
     
-    if action == 'add':
-        orderProduct.quantity = (orderProduct.quantity + 1)
-    elif action == 'remove':
-        orderProduct.quantity = (orderProduct.quantity - 1)
+    #if action == 'add':
+    #    orderProduct.quantity = (orderProduct.quantity + 1)
+    #elif action == 'remove':
+    #    orderProduct.quantity = (orderProduct.quantity - 1)
     
-    orderProduct.save()
+    # orderProduct.save()
 
-    if orderProduct.quantity <= 0:
-        orderProduct.delete()
+    #if orderProduct.quantity <= 0:
+    #    orderProduct.delete()
 
     return JsonResponse('item added', safe=False)
