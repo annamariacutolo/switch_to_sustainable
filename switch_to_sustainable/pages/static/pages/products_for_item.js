@@ -9,14 +9,31 @@ function show_new_product_list(products) {
             product_list_items += '<li>' + product.name +
                 '<ul> ' +
                 '<li>' + product.description + '</li>' +
-                '<li>£' + product.price + '</li>' + '<br>' +
-                '<button type="submit">Add to cart</button>' +
+                '<li>£' + (product.price).toFixed(2) + '</li>' + '<br>' +
+                '<button type="submit" class="update-cart" data-product="' +
+                product.id + '" data-action="add">Add to cart</button>' +
                 '</ul>' +
                 '</li>'
-        })
+
+        });
         product_list_element.innerHTML = '<ul>\n' + product_list_items + '</ul>\n'
+        var updateButtons = document.getElementsByClassName('update-cart');
+
+        for (var i = 0; i < updateButtons.length; i++) {
+            if (user === 'AnonymousUser') {
+                // updateButtons[i].addEventListener('click', messages.warning('Please log in to purchase.'));
+                updateButtons[i].addEventListener('click', alert('Please log in to purchase.'), true);
+            } else {
+                updateButtons[i].addEventListener('click', function() {
+                    var productId = this.dataset.product;
+                    var action = this.dataset.action;
+                    updateUserOrder(productId, action);
+                }, true);
+            }
+        }
     }
 }
+
 
 function update_product_list(item_id) {
     if (item_id < 0) {
@@ -45,4 +62,4 @@ window.onload = (event) => {
         const item_id = dropdown.options[dropdown.selectedIndex].value;
         update_product_list(item_id);
     }
-};
+}
