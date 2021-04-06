@@ -1,15 +1,17 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect
 from django.contrib import messages, admin
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Item, Product
+from .models import Item, Product, OrderProduct, Order, Customer, Shipping
 from .forms import NewProductForm, NewUserForm
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import re
+import json
 
-# Create your views here.
+
 def home(request):
     return render(request, 'home.html')
 
@@ -92,6 +94,7 @@ class ListProductsForItems(APIView):
 
         products = [
             {
+                'id': product.id,
                 'name': product.name,
                 'description': product.description,
                 'stock': product.stock,
@@ -115,11 +118,52 @@ def check_for_match(string):
             return item.name
 
     return string
+
+
 def cart(request):
-    context = {}
-    return render(request, 'cart.html', context)
+    if request.user.is_authenticated:
+        customer, created = Customer.objects.get_or_create(user=request.user)
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        products = order.orderproduct_set.all()
+
+        context = {'products': products, 'order': order}
+        return render(request, 'cart.html', context)
+    else:
+        messages.warning(request, 'Please log in to make a purchase.')
+        return HttpResponseRedirect('/accounts/login')
 
 
 def checkout(request):
-    context = {}
+    customer = request.user.customer
+    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+    products = order.orderproduct_set.all()
+
+    context = {'products': products, 'order': order}
     return render(request, 'checkout.html', context)
+
+
+def update_item(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+    print('action:', action)
+    print('product', productId)
+
+    customer = request.user.customer
+    product = Product.objects.get(id=productId)
+    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
+    orderProduct, created = OrderProduct.objects.get_or_create(order=order, product=product)
+    
+    if action == 'add':
+        orderProduct.quantity = (orderProduct.quantity + 1)
+    elif action == 'remove':
+        orderProduct.quantity = (orderProduct.quantity - 1)
+    
+    orderProduct.save()
+
+    if orderProduct.quantity <= 0:
+        orderProduct.delete()
+
+    return JsonResponse('item added', safe=False)
