@@ -41,7 +41,7 @@ class Customer(models.Model):
     #         return
     #     Customer.objects.create(user=instance)
     # post_save.connect(customer_profile, sender=User)
-
+   
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)

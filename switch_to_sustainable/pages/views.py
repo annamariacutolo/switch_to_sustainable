@@ -10,6 +10,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 import json
 
+import json
+
 
 def home(request):
     return render(request, 'home.html')
@@ -157,7 +159,9 @@ def update_item(request):
     print('product', productId)
 
     customer = request.user.customer
+    
     product = Product.objects.get(id=productId)
+    print(product)
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
     orderProduct, created = OrderProduct.objects.get_or_create(order=order, product=product)
