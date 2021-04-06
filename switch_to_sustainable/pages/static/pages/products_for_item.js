@@ -16,21 +16,8 @@ function show_new_product_list(products) {
                 '</li>'
 
         });
+        
         product_list_element.innerHTML = '<ul>\n' + product_list_items + '</ul>\n'
-        var updateButtons = document.getElementsByClassName('update-cart');
-
-        for (var i = 0; i < updateButtons.length; i++) {
-            if (user === 'AnonymousUser') {
-                // updateButtons[i].addEventListener('click', messages.warning('Please log in to purchase.'));
-                updateButtons[i].addEventListener('click', alert('Please log in to purchase.'), true);
-            } else {
-                updateButtons[i].addEventListener('click', function() {
-                    var productId = this.dataset.product;
-                    var action = this.dataset.action;
-                    updateUserOrder(productId, action);
-                }, true);
-            }
-        }
     }
 }
 
