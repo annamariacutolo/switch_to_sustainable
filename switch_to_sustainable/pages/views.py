@@ -167,8 +167,15 @@ def update_item(request):
     if action == 'add':
         print(product.stock)
         orderProduct.quantity = (orderProduct.quantity + 1)
-        product.stock -= 1
+        # throw error implementation - return http error
+        if product.stock>0:
+            product.stock -= 1
+        else:
+            return JsonResponse('Error', safe=False, status=400)
+        
         print(product.stock)
+
+
     elif action == 'remove':
         orderProduct.quantity = (orderProduct.quantity - 1)
         product.stock += 1
@@ -179,5 +186,13 @@ def update_item(request):
     if orderProduct.quantity <= 0:
         orderProduct.delete()
 
+    dict = {
+                'id': product.id,
+                'name': product.name,
+                'description': product.description,
+                'stock': product.stock,
+                'price': product.price
+            }
 
-    return JsonResponse('item added', safe=False)
+
+    return JsonResponse(dict, safe=False)
