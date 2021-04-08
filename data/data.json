@@ -109,9 +109,9 @@
         "fields": {
             "name": "Bamboo toothbrush",
             "item_id": "1",
-            "description": "100% natural, biodegradable toothbrush made with sustainably sourced bamboo",
-            "stock": 4,
-            "price": 3,
+            "description": "a",
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -121,8 +121,8 @@
         "fields": {
             "name": "Metal straws",
             "item_id": "2",
-            "description": "Infinitely reusable stainless steel straw with a case to take out with you",
-            "stock": 5,
+            "description": "a",
+            "stock": 0,
             "price": 5,
             "is_approved": true
         }
@@ -133,8 +133,8 @@
         "fields": {
             "name": "Bamboo straws",
             "item_id": "2",
-            "description": "Eco-friendly and zero waste!",
-            "stock": 4,
+            "description": "a",
+            "stock": 0,
             "price": 5,
             "is_approved": true
         }
@@ -145,9 +145,9 @@
         "fields": {
             "name": "Glass straws",
             "item_id": "2",
-            "description": "Shatterproof glass straw",
-            "stock": 6,
-            "price": 6,
+            "description": "a",
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -157,7 +157,7 @@
         "fields": {
             "name": "Silicone straws",
             "item_id": "2",
-            "description": "Made from food grade silicone, easy to clean",
+            "description": "a",
             "stock": 0,
             "price": 5,
             "is_approved": true
@@ -169,9 +169,9 @@
         "fields": {
             "name": "Menstrual cup",
             "item_id": "3",
-            "description": "Hygenic cups made from medical grade materials, a way to have waste free periods whilst saving money!",
-            "stock": 3,
-            "price": 18,
+            "description": "a",
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -181,9 +181,9 @@
         "fields": {
             "name": "Period pants",
             "item_id": "3",
-            "description": "The ultimate eco friendly, comfortable way to get through your period and they're machine washable!",
-            "stock": 15,
-            "price": 22,
+            "description": "a",
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -193,9 +193,9 @@
         "fields": {
             "name": "Reusable sanitary pad",
             "item_id": "3",
-            "description": "A comfortable product for a range of flows",
-            "stock": 2,
-            "price": 14,
+            "description": "a",
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -205,9 +205,9 @@
         "fields": {
             "name": "Reusable tampon applicator",
             "item_id": "3",
-            "description": "A way to reduce waste whilst sticking with what you may be used to",
+            "description": "a",
             "stock": 0,
-            "price": 8,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -217,9 +217,9 @@
         "fields": {
             "name": "Reusable make-up remover pads",
             "item_id": "4",
-            "description": "A soothing and sustainable way to remove your make-up each day, for use with all types of facial cleansers",
-            "stock": 10,
-            "price": 8,
+            "description": "a",
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -229,9 +229,9 @@
         "fields": {
             "name": "Silicone alternative to cotton buds",
             "item_id": "5",
-            "description": "World's first reusable cotton bud, combats the billions of cotton buds produced every day",
-            "stock": 3,
-            "price": 10,
+            "description": "a",
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -241,9 +241,9 @@
         "fields": {
             "name": "Shampoo or conditioner bars",
             "item_id": "6",
-            "description": "Super concentrated, less packaging waste. Made of natural ingredients, pH balanced guarenteed to nourish your hair",
-            "stock": 10,
-            "price": 4,
+            "description": "Super concentrated, less packaging waste",
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -255,7 +255,7 @@
             "item_id": "6",
             "description": "Refill packs contain what you're used to and produce a lot less plastic waste",
             "stock": 0,
-            "price": 8,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -266,8 +266,8 @@
             "name": "Reusable coffee cup",
             "item_id": "7",
             "description": "KeepCups make a great option and you might even get money off your coffee!",
-            "stock": 3,
-            "price": 12,
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -278,8 +278,8 @@
             "name": "Bamboo cutlery",
             "item_id": "8",
             "description": "Often come with a case to keep them clean whilst inside your bag",
-            "stock": 10,
-            "price": 8,
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -287,10 +287,10 @@
         "model": "pages.product",
         "pk": 16,
         "fields": {
-            "name": "Stainless-steel cutlery",
+            "name": "Metal cutlery",
             "item_id": "8",
             "description": "Often come with a case to keep them clean whilst inside your bag",
-            "stock": 3,
+            "stock": 0,
             "price": 5,
             "is_approved": true
         }
@@ -301,21 +301,9 @@
         "fields": {
             "name": "Beeswax wrap",
             "item_id": "9",
-            "description": "Three sheets per pack. Reusable foodwrap which comes in multiple designs",
-            "stock": 5,
-            "price": 12,
-            "is_approved": true
-        }
-    },
-    {
-        "model": "pages.product",
-        "pk": 17,
-        "fields": {
-            "name": "Plany based food-wrap",
-            "item_id": "9",
-            "description": "Three sheets per pack. Reusable foodwrap which comes in multiple designs, vegan and animal friendly!",
-            "stock": 5,
-            "price": 12,
+            "description": "reusable!",
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -325,9 +313,9 @@
         "fields": {
             "name": "Silicone stretch lids",
             "item_id": "9",
-            "description": "Washable and reusable! For a back of 6 in a variety of sizes. Freezer and microwave safe, BPA free",
-            "stock": 8,
-            "price": 12,
+            "description": "Washable and reusable!",
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -338,8 +326,8 @@
             "name": "Fabric reusable shopping or tote bags",
             "item_id": "10",
             "description": "Always keep one folded in your bag!",
-            "stock": 5,
-            "price": 4,
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -347,11 +335,11 @@
         "model": "pages.product",
         "pk": 20,
         "fields": {
-            "name": "Reusable hard plastic water bottles, BPA free, choose your size and colour",
+            "name": "Reusable hard plastic water bottles",
             "item_id": "11",
             "description": "Last ages!",
-            "stock": 4,
-            "price": 8,
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -361,9 +349,9 @@
         "fields": {
             "name": "Stainless steel water bottles",
             "item_id": "11",
-            "description": "Some of these keep your water cool too, very useful in summer. Also come in a variety of sizes and colours",
+            "description": "Some of these keep your water cool too, very useful in summer",
             "stock": 0,
-            "price": 18,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -374,7 +362,7 @@
             "name": "Stainless steel coffee filter",
             "item_id": "12",
             "description": "For drip coffee or aeropress",
-            "stock": 8,
+            "stock": 0,
             "price": 5,
             "is_approved": true
         }
@@ -397,9 +385,9 @@
         "fields": {
             "name": "Refillable and compostable floss",
             "item_id": "13",
-            "description": "Floss can be made of non-toxic, biodegradable materials, refill packs available",
-            "stock": 3,
-            "price": 4,
+            "description": "Floss can be made of non-toxic, biodegradable materials",
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -410,8 +398,8 @@
             "name": "Reusable razor handle with replaceable heads",
             "item_id": "14",
             "description": "Razors like these come in a variety of materials from stainless steel, to recycled plastic",
-            "stock": 3,
-            "price": 18,
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     },
@@ -422,8 +410,8 @@
             "name": "Reusable cloth nappies",
             "item_id": "15",
             "description": "They even reduce the likelihood of nappy rash",
-            "stock": 12,
-            "price": 12,
+            "stock": 0,
+            "price": 5,
             "is_approved": true
         }
     }
