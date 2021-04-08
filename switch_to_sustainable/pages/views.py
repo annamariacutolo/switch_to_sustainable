@@ -4,11 +4,14 @@ from django.contrib import messages, admin
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Item, Product, OrderProduct, Order, Customer
+from .models import Item, Product, OrderProduct, Order, Customer, Shipping
 from .forms import NewProductForm, NewUserForm, CheckoutForm
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import json
+import datetime
+from ukpostcodeutils import validation
+from django.forms import ValidationError
 
 
 def home(request):
@@ -24,7 +27,7 @@ def products(request):
     return render(request, 'products.html', context)
 
 
-# @login_required
+@login_required
 def new_product_form(request):
     if request.method == 'GET':
         form = NewProductForm()
@@ -126,25 +129,60 @@ def cart(request):
             order.products.add(product)
 
 
-        context = {'products': products, 'order': order, 'shipping': False}
+        context = {'products': products, 'order': order}
         return render(request, 'cart.html', context)
     else:
         messages.warning(request, 'Please log in to make a purchase. (From cart)')
         return HttpResponseRedirect('/accounts/login')
 
-
 def checkout(request):
     customer = request.user.customer
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
     products = order.orderproduct_set.all()
     cartProducts = order.get_cart_items
+    
+    if request.method == 'GET':
+        form = CheckoutForm()
+        context = {'products': products, 'order': order, 'cartProducts': cartProducts, 'form': form}
+        return render(request, 'checkout.html', context)
 
-    # dont know if we need this here too
-    # for product in products:
-    #         order.products.add(product)
+    form = CheckoutForm(request.POST)
+    context = {'products': products, 'order': order, 'cartProducts': cartProducts, 'form': form}
+    if not form.is_valid():
+        return render(request, 'checkout.html', context)
+    
+    name = form.cleaned_data['name'].strip()
+    street_address = form.cleaned_data['street_address'].strip()
+    city = form.cleaned_data['city'].strip()
+    state = form.cleaned_data['state'].strip()
+    postcode = form.cleaned_data['postcode'].strip().upper()
+    phone_number = form.cleaned_data['phone_number'].strip()
 
-    context = {'products': products, 'order': order, 'cartProducts': cartProducts, 'shipping': False}
-    return render(request, 'checkout.html', context)
+    postcode = ''.join(postcode.split())
+
+    if len(phone_number) != 11:
+        messages.warning(request, 'Please enter a valid phone number')
+        return render(request, 'checkout.html', context)
+
+    if not phone_number.isdecimal():
+        messages.warning(request, 'Please enter a valid phone number')
+        return render(request, 'checkout.html', context)
+
+    if not validation.is_valid_postcode(postcode):
+        messages.warning(request, 'Please enter a valid postcode')
+        return render(request, 'checkout.html', context)
+
+    order.order_date = datetime.datetime.today().strftime('%Y-%m-%d')
+    order.order_id = datetime.datetime.now().timestamp()
+    order.complete = True
+    order.save()
+
+    new_shipping = Shipping(customer = customer, order = order, street_address = street_address, city = city, state = state, postcode = postcode, phone_number = phone_number)
+    new_shipping.save()
+
+    messages.success(request, f'Thanks for your order')
+    return HttpResponseRedirect('/')
 
 
 def update_item(request):
@@ -163,26 +201,29 @@ def update_item(request):
     orderProduct, created = OrderProduct.objects.get_or_create(order=order, product=product)
     
     if action == 'add':
-        print(product.stock)
+        #print(product.stock)
         orderProduct.quantity = (orderProduct.quantity + 1)
         # throw error implementation - return http error
         if product.stock>0:
             product.stock -= 1
         else:
+            messages.warning(request, 'Sorry, this product is out of stock')
             return JsonResponse('Error', safe=False, status=400)
         
-        print(product.stock)
-
-
+        #print(product.stock)
+        
     elif action == 'remove':
-        orderProduct.quantity = (orderProduct.quantity - 1)
-        product.stock += 1
-    
+        if orderProduct.quantity > 0:
+            orderProduct.quantity = (orderProduct.quantity - 1)
+            product.stock += 1
+        else:
+            messages.warning(request, 'Sorry, the product is unavailable')
+            return JsonResponse('Error', safe=False, status=400)
+    if orderProduct.quantity <= 0:
+        orderProduct.delete()   
+         
     orderProduct.save()
     product.save()
-
-    if orderProduct.quantity <= 0:
-        orderProduct.delete()
 
     dict = {
                 'id': product.id,

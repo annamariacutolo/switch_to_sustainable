@@ -26,10 +26,12 @@ class CheckoutForm(forms.Form):
     city = forms.CharField(max_length=100)
     state = forms.CharField(max_length=100)
     postcode = forms.CharField(max_length=7)
-    phone_number = forms.IntegerField()
+    phone_number = forms.CharField(max_length=20)
 
     class Meta:
         model = User
+        fields = ["first_name", "last_name", "email", "street-address", "city", "state", "postcode", "phone_number"]
+
 
 
 # class Shipping(models.Model):
