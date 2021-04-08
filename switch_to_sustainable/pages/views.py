@@ -37,23 +37,20 @@ def new_product_form(request):
     if not form.is_valid():
         return render(request, 'new_product.html', {'form': form})
 
-    #  should we do .strip() on these ?
-    single_use_product = form.cleaned_data['item_name'].lower().capitalize()
-    #print("before single use is: " + single_use_product)
+    single_use_product = form.cleaned_data['item_name'].lower().capitalize().strip()
     single_use_product = check_for_match(single_use_product)
-    replacement = form.cleaned_data['product_name'].lower().capitalize()
-    description = form.cleaned_data['description']
+    replacement = form.cleaned_data['product_name'].lower().capitalize().strip()
+    description = form.cleaned_data['description'].strip()
 
-    # apparently if checking if it exists then it is more efficient to use .exists()
-    if Item.objects.filter(name = single_use_product):
+    if Item.objects.filter(name = single_use_product).exists():
         item = Item.objects.filter(name = single_use_product).first()
         item_id = item.id
 
-        if Product.objects.filter(name = replacement, item_id = item_id, is_approved=True):
+        if Product.objects.filter(name = replacement, item_id = item_id, is_approved=True).exists():
             messages.warning(request, f'Product "{replacement}" for {single_use_product} already on our website.')
             return render(request, 'new_product.html', {'form': form})
 
-        if Product.objects.filter(name = replacement, item_id = item_id, is_approved=False):
+        if Product.objects.filter(name = replacement, item_id = item_id, is_approved=False).exists():
             messages.warning(request, f'We are already reviewing the product "{replacement}" for use instead of {single_use_product}, but thanks for your suggestion!')
             return render(request, 'new_product.html', {'form': form})
 
@@ -128,7 +125,6 @@ def cart(request):
         for product in products:
             order.products.add(product)
 
-
         context = {'products': products, 'order': order}
         return render(request, 'cart.html', context)
     else:
@@ -189,22 +185,18 @@ def update_item(request):
     data = json.loads(request.body)
     productId = data['productId']
     action = data['action']
-    print('action:', action)
-    print('product', productId)
-
-    customer = request.user.customer
     
+    customer = request.user.customer
     product = Product.objects.get(id=productId)
-    print(product)
-    order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
+    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+    print('action:', action, 'product:', productId, 'product name:', product)
     orderProduct, created = OrderProduct.objects.get_or_create(order=order, product=product)
     
     if action == 'add':
         #print(product.stock)
-        orderProduct.quantity = (orderProduct.quantity + 1)
-        # throw error implementation - return http error
         if product.stock>0:
+            orderProduct.quantity = (orderProduct.quantity + 1)
             product.stock -= 1
         else:
             messages.warning(request, 'Sorry, this product is out of stock')
@@ -236,15 +228,8 @@ def update_item(request):
 
     return JsonResponse(dict, safe=False)
 
-def eco_shop2(request):
-    if request.method == 'GET':
-        items = Item.objects.all()
-        item_id = request.GET.get('item_id')  
-        context = {'item_id': item_id, 'items':items}
-    
-    return render(request, 'eco_shop2.html', context)
 
-def eco_shop22(request):
+def eco_shop(request):
     item_id = request.GET.get('item_id')
     items = Item.objects.all()
     products = [
@@ -260,5 +245,5 @@ def eco_shop22(request):
 
     context = {'item_id': item_id, 'products': products, 'items':items}
 
-    return render(request, 'eco_shop22.html', context)
+    return render(request, 'eco_shop.html', context)
 
