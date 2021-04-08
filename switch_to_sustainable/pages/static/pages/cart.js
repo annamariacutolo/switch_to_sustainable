@@ -1,17 +1,3 @@
-document.addEventListener('click',function(e){
-    if (e.target.tagName=="BUTTON"){
-        //console.log(`target.id: ${e.target.dataset.product} action: ${e.target.dataset.action} `)
-
-        if (user != 'AnonymousUser'){
-            updateUserOrder(e.target.dataset.product, e.target.dataset.action)
-        } else {
-            alert('Please log in to add items to cart.')
-        }
-        
-    }
- }); 
-
-
 function updateUserOrder(productId, action) {
     console.log('logged in');
 
