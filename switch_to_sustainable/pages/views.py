@@ -16,14 +16,11 @@ def home(request):
 
 
 def products(request):
-    product_list = Product.objects.filter(is_approved=True).all()
-    items = []
-    for product in product_list:
-        if not product.item in items:
-            items.append(product.item)
-    context = {
-        'items': items,
-    }
+    if request.method == 'GET':
+        items = Item.objects.all()
+        item_id = request.GET.get('item_id')  
+        context = {'item_id': item_id, 'items':items}
+    
     return render(request, 'products.html', context)
 
 

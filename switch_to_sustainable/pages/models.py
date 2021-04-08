@@ -40,9 +40,9 @@ class Customer(models.Model):
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     products = models.ManyToManyField('OrderProduct', related_name='orderproducts')
-    order_date = models.DateTimeField(null=True)
+    #order_date = models.DateTimeField(null=True)
     complete = models.BooleanField(default=False)
-    order_id = models.CharField(max_length=200, null=True)
+    
 
     def __str__(self):
         return str(self.id)
