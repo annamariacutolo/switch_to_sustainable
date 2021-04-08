@@ -13,30 +13,6 @@ document.addEventListener('click', function(e) {
 });
 
 
-var upButtons = document.getElementsByClassName('quantity-up');
-for (var i = 0; i < upButtons.length; i++) {
-    upButtons[i].addEventListener('click', function() {
-        console.log('hi')
-
-    });
-}
-
-/*
-var updateButtons = document.getElementsByClassName('update-cart');
-
-        for (var i = 0; i < updateButtons.length; i++) {
-            if (user === 'AnonymousUser') {
-                // updateButtons[i].addEventListener('click', messages.warning('Please log in to purchase.'));
-                updateButtons[i].addEventListener('click', alert('Please log in to purchase.'), true);
-            } else {
-                updateButtons[i].addEventListener('click', function() {
-                    var productId = this.dataset.product;
-                    var action = this.dataset.action;
-                    updateUserOrder(productId, action);
-                }, true);
-            }
-        }
-*/
 function updateUserOrder(productId, action) {
     console.log('logged in');
 
