@@ -25,12 +25,9 @@ class Product(models.Model):
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=200)
-    last_name = models.CharField(max_length=200)
-    email = models.EmailField()
 
     def __str__(self):
-        return self.first_name + ' ' + self.last_name
+        return self.user.first_name + ' ' + self.user.last_name
 
     @receiver(post_save, sender=User, dispatch_uid='save_new_user_profile')
     def customer_profile(sender, instance, created, **kwargs):
@@ -43,12 +40,12 @@ class Customer(models.Model):
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     products = models.ManyToManyField('OrderProduct', related_name='orderproducts')
-    order_date = models.DateTimeField(null=True)
+    #order_date = models.DateTimeField(null=True)
     complete = models.BooleanField(default=False)
-    order_id = models.CharField(max_length=200, null=True)
+    
 
     def __str__(self):
-        return self.order_id
+        return str(self.id)
     
     @property
     def get_cart_total(self):
