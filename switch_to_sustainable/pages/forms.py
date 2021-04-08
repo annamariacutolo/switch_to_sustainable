@@ -11,34 +11,13 @@ class NewProductForm(forms.Form):
 
 
 class NewUserForm(UserCreationForm):
-    first_name = forms.CharField(max_length=200)
-    last_name = forms.CharField(max_length=200)
     email = forms.EmailField()
     
     class Meta:
         model = User
-        fields = ["username", "first_name", "last_name", "email", "password1", "password2"]
+        fields = ["username", "email", "password1", "password2"]
 
-
-class CheckoutForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    street_address = forms.CharField(max_length=100)
-    city = forms.CharField(max_length=100)
-    state = forms.CharField(max_length=100)
-    postcode = forms.CharField(max_length=7)
-    phone_number = forms.IntegerField()
-
+class Checkout(forms.Form):
+    
     class Meta:
         model = User
-
-
-# class Shipping(models.Model):
-#     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
-#     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
-#     street_address = models.CharField(max_length=200)
-#     city = models.CharField(max_length=200)
-#     state = models.CharField(max_length=200)
-#     postcode = models.CharField(max_length=20)
-
-#     def __str__(self):
-#         return self.address

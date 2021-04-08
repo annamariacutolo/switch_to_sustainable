@@ -3,18 +3,12 @@
 <form action="" method="post">
     {% csrf_token %}
     <div>
-        <p>Name</p>
-        {{form.name}}
-        <p>Address Line One</p>
-        {{form.street_address}}
-        <p>City</p>
-        {{form.city}}
-        <p>State/County</p>
-        {{form.state}}
-        <p>Postal Code</p>
-        {{form.postcode}}
-        <p>Please enter your mobile phone number</p>
-        {{form.number}}
+        <!-- {{ form.name }} -->
+        <ul>
+            <li>Name</li>
+            <li>Address</li>
+            <li>Etc</li>
+        </ul>
     </div>
 </form>
 

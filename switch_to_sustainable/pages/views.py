@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Item, Product, OrderProduct, Order, Customer
-from .forms import NewProductForm, NewUserForm, CheckoutForm
+from .forms import NewProductForm, NewUserForm
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import json
@@ -129,7 +129,7 @@ def cart(request):
             order.products.add(product)
 
 
-        context = {'products': products, 'order': order, 'shipping': False}
+        context = {'products': products, 'order': order}
         return render(request, 'cart.html', context)
     else:
         messages.warning(request, 'Please log in to make a purchase. (From cart)')
@@ -140,13 +140,12 @@ def checkout(request):
     customer = request.user.customer
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
     products = order.orderproduct_set.all()
-    cartProducts = order.get_cart_items
 
     # dont know if we need this here too
     # for product in products:
     #         order.products.add(product)
 
-    context = {'products': products, 'order': order, 'cartProducts': cartProducts, 'shipping': False}
+    context = {'products': products, 'order': order}
     return render(request, 'checkout.html', context)
 
 
@@ -197,30 +196,3 @@ def update_item(request):
 
 
     return JsonResponse(dict, safe=False)
-
-def eco_shop2(request):
-    if request.method == 'GET':
-        items = Item.objects.all()
-        item_id = request.GET.get('item_id')  
-        context = {'item_id': item_id, 'items':items}
-    
-    return render(request, 'eco_shop2.html', context)
-
-def eco_shop22(request):
-    item_id = request.GET.get('item_id')
-    items = Item.objects.all()
-    products = [
-        {
-            'id': product.id,
-            'name': product.name,
-            'description': product.description,
-            'stock': product.stock,
-            'price': product.price
-        }
-        for product in Product.objects.filter(item_id=item_id, is_approved=True)
-    ]
-
-    context = {'item_id': item_id, 'products': products, 'items':items}
-
-    return render(request, 'eco_shop22.html', context)
-
