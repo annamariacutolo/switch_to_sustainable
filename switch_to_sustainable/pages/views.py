@@ -10,6 +10,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 import json
 
+import json
+
 
 def home(request):
     return render(request, 'home.html')
@@ -121,6 +123,7 @@ def check_for_match(string):
 
 def cart(request):
     if request.user.is_authenticated:
+        customer, created = Customer.objects.get_or_create(user=request.user)
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         products = order.orderproduct_set.all()
@@ -128,11 +131,10 @@ def cart(request):
         for product in products:
             order.products.add(product)
 
-
         context = {'products': products, 'order': order}
         return render(request, 'cart.html', context)
     else:
-        messages.warning(request, 'Please log in to make a purchase. (From cart)')
+        messages.warning(request, 'Please log in to make a purchase.')
         return HttpResponseRedirect('/accounts/login')
 
 
@@ -164,20 +166,14 @@ def update_item(request):
 
     orderProduct, created = OrderProduct.objects.get_or_create(order=order, product=product)
     
-    if action == 'add':
-        print(product.stock)
-        orderProduct.quantity = (orderProduct.quantity + 1)
-        product.stock -= 1
-        print(product.stock)
-    elif action == 'remove':
-        orderProduct.quantity = (orderProduct.quantity - 1)
-        product.stock += 1
+    # if action == 'add':
+    #     orderProduct.quantity = (orderProduct.quantity + 1)
+    # elif action == 'remove':
+    #     orderProduct.quantity = (orderProduct.quantity - 1)
     
-    orderProduct.save()
-    product.save()
+    # orderProduct.save()
 
-    if orderProduct.quantity <= 0:
-        orderProduct.delete()
-
+    # if orderProduct.quantity <= 0:
+    #     orderProduct.delete()
 
     return JsonResponse('item added', safe=False)

@@ -6,31 +6,17 @@ function show_new_product_list(products) {
     } else {
         let product_list_items = '';
         products.forEach(function(product) {
-            let disabled = "disabled";
-            if (product.stock > 0) {
-                console.log(product.stock)
-                product_list_items += '<li>' + product.name +
-                    '<ul> ' +
-                    '<li>' + product.description + '</li>' +
-                    '<li>£' + (product.price).toFixed(2) + '</li>' + '<br>' +
-                    '<button type="submit" class="update-cart" data-product="' +
-                    product.id + '" data-action="add">Add to cart</button>' +
-                    '</ul>' +
-                    '</li>'
-            } else {
-                product_list_items += '<li>' + product.name +
-                    '<ul> ' +
-                    '<li>' + product.description + '</li>' +
-                    '<li>£' + (product.price).toFixed(2) + '</li>' + '<br>' +
-                    '<button type="submit" class="out-of-stock" data-product="' +
-                    product.id + '" disabled>Out of stock</button>' +
-                    '</ul>' +
-                    '</li>'
-            }
-
+            product_list_items += '<li>' + product.name +
+                '<ul> ' +
+                '<li>' + product.description + '</li>' +
+                '<li>£' + (product.price).toFixed(2) + '</li>' + '<br>' +
+                '<button type="submit" class="update-cart" data-product="' +
+                product.id + '" data-action="add">Add to cart</button>' +
+                '</ul>' +
+                '</li>'
 
         });
-
+        
         product_list_element.innerHTML = '<ul>\n' + product_list_items + '</ul>\n'
     }
 }
