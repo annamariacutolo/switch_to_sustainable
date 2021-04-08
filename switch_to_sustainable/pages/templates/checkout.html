@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %}Checkout{% endblock %} {% block body %}
 <h2>Shipping information</h2>
-<form action="" method="post">
+<form action="" method="post" id="form">
     {% csrf_token %}
     <div>
         <p>Name</p>
@@ -14,27 +14,29 @@
         <p>Postal Code</p>
         {{form.postcode}}
         <p>Please enter your mobile phone number</p>
-        {{form.number}}
+        {{form.phone_number}}
+    </div>
+
+
+    <h2>Order summary</h2>
+    <div>
+        {% for product in products %}
+        <div>
+            <ul>
+                <li>Product: {{ product.product.name }}</li>
+                <li>Price: £{{ product.product.price|floatformat:2 }}</li>
+                <li>Quantity: {{ product.quantity }}</li>
+            </ul>
+        </div>
+        {% endfor %}
+        <div>
+            <h3>Products: {{ order.get_cart_items }}</h3>
+            <h3>Total: £{{ order.get_cart_total|floatformat:2 }}</h3>
+        </div>
+
+        <button type="submit" id="pay-now">Pay now</button>
+        <button type="submit "><a href="{% url 'cart' %}">Back to cart</a></button>
     </div>
 </form>
 
-<h2>Order summary</h2>
-<div>
-    {% for product in products %}
-    <div>
-        <ul>
-            <li>Product: {{ product.product.name }}</li>
-            <li>Price: £{{ product.product.price|floatformat:2 }}</li>
-            <li>Quantity: {{ product.quantity }}</li>
-        </ul>
-    </div>
-    {% endfor %}
-    <div>
-        <h3>Products: {{ order.get_cart_items }}</h3>
-        <h3>Total: £{{ order.get_cart_total|floatformat:2 }}</h3>
-    </div>
-
-    <button type="submit"><a href="">Pay now</a></button>
-    <button type="submit"><a href="{% url 'cart' %}">Back to cart</a></button>
-</div>
 {% endblock %}

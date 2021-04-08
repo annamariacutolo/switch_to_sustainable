@@ -9,8 +9,8 @@
             <li>Product: {{ product.product.name }}</li>
             <li>Price: £{{ product.product.price|floatformat:2 }}</li>
             <li>Quantity: {{ product.quantity }}
-                <button type="submit" class="quantity-up" data-product={{product.quantity}} data-action="add"><i class="fas fa-sort-up" data-product={{product.quantity}} data-action="add"></i></button>
-                <button type="submit" class="quantity-down" data-product={{product.quantity}} data-action="remove"><i class="fas fa-sort-down" data-product={{product.quantity}} data-action="remove"></i></button></li> 
+                <button type="submit" class="quantity-up" data-product={{product.product.id}} data-action="add"><i class="fas fa-sort-up" data-product={{product.product.id}} data-action="add"></i></button>
+                <button type="submit" class="quantity-down" data-product={{product.product.id}} data-action="remove"><i class="fas fa-sort-down" data-product={{product.product.id}} data-action="remove"></i></button></li>
             <li>Total: £{{ product.get_total|floatformat:2 }}</li>
         </ul>
     </div>
