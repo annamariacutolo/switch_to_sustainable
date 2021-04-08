@@ -73,6 +73,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'switch_to_sustainable.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
