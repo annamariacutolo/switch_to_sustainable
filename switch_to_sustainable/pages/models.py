@@ -49,7 +49,7 @@ class Order(models.Model):
 
     def __str__(self):
         return self.order_id
-
+    
     @property
     def get_cart_total(self):
         orderproducts = self.orderproduct_set.all()
@@ -62,11 +62,16 @@ class Order(models.Model):
         total = sum([product.quantity for product in orderproducts])
         return total
 
+    @property
+    def shipping(self):
+        shipping = True
+        return shipping
+
 
 class OrderProduct(models.Model):
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    quantity = models.IntegerField(default=1)
+    quantity = models.IntegerField(default=0)
 
     class Meta:
         unique_together = ('order', 'product')
@@ -90,4 +95,3 @@ class OrderProduct(models.Model):
 
 #     def __str__(self):
 #         return self.address
-        

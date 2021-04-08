@@ -311,7 +311,7 @@
         "model": "pages.product",
         "pk": 17,
         "fields": {
-            "name": "Plany based food-wrap",
+            "name": "Plant based food-wrap",
             "item_id": "9",
             "description": "Three sheets per pack. Reusable foodwrap which comes in multiple designs, vegan and animal friendly!",
             "stock": 5,
