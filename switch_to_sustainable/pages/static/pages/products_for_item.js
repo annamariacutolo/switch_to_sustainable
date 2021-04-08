@@ -13,8 +13,8 @@ function show_new_product_list(products) {
                     '<ul> ' +
                     '<li>' + product.description + '</li>' +
                     '<li>£' + (product.price).toFixed(2) + '</li>' + '<br>' +
-                    '<button type="submit" class="update-cart" id="' + product.id + '_btn"' +
-                    'data-product="' + product.id + '" data-action="add">Add to cart</button>' +
+                    '<button type="submit" class="update-cart" data-product="' +
+                    product.id + '" data-action="add">Add to cart</button>' +
                     '</ul>' +
                     '</li>'
             } else {
@@ -22,8 +22,8 @@ function show_new_product_list(products) {
                     '<ul> ' +
                     '<li>' + product.description + '</li>' +
                     '<li>£' + (product.price).toFixed(2) + '</li>' + '<br>' +
-                    '<button type="submit" class="out-of-stock" id="' + product.id + '_btn"' +
-                    'data-product="' + product.id + '" disabled>Out of stock</button>' +
+                    '<button type="submit" class="out-of-stock" data-product="' +
+                    product.id + '" disabled>Out of stock</button>' +
                     '</ul>' +
                     '</li>'
             }

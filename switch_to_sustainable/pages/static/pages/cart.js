@@ -2,6 +2,7 @@ document.addEventListener('click', function(e) {
     if (e.target.tagName == "BUTTON" && e.target.className == "update-cart") {
         //console.log(`target.id: ${e.target.dataset.product} action: ${e.target.dataset.action} `)
 
+
         if (user != 'AnonymousUser') {
             updateUserOrder(e.target.dataset.product, e.target.dataset.action)
         } else {
@@ -9,22 +10,6 @@ document.addEventListener('click', function(e) {
         }
 
     }
-    // I added lines 14 to 26 for up and down buttons and info for cart.html for the i variables
-    // The update user if uncommented should work for the backend too, but does not fix the reload problem
-    if (e.target.tagName == "BUTTON" | e.target.tagName == "I") {
-
-        if (e.target.className == "quantity-up" | e.target.className == "fas fa-sort-up") {
-            console.log('global listener button up')
-            console.log(`target.id: ${e.target.dataset.product} action: ${e.target.dataset.action} `)
-                //updateUserOrder(e.target.dataset.product, e.target.dataset.action)
-        }
-        if (e.target.className == "quantity-down" | e.target.className == "fas fa-sort-down") {
-            console.log('global listener button down')
-            console.log(`target.id: ${e.target.dataset.product} action: ${e.target.dataset.action} `)
-                //updateUserOrder(e.target.dataset.product, e.target.dataset.action)
-        }
-    }
-
 });
 
 
@@ -52,8 +37,6 @@ var updateButtons = document.getElementsByClassName('update-cart');
             }
         }
 */
-
-
 function updateUserOrder(productId, action) {
     console.log('logged in');
 
@@ -75,9 +58,7 @@ function updateUserOrder(productId, action) {
     })
 
     .then((data) => {
-        console.log('data:', data.id);
-        if (data.stock == 0) {
-            location.reload()
-        }
+        console.log('data:', data)
+            //location.reload()
     })
 }
