@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% block title %}Cart{% endblock %} {% block body %}
+{% extends "base.html" %} {% load static %} {% block title %}Cart{% endblock %} {% block extra_header_contents %}
+<script src="{% static 'pages/cart.js' %}"></script>
+{% endblock %} {% block body %}
 <h2>Shopping Basket</h2>
 <div>
     {% for product in products %}
@@ -6,7 +8,9 @@
         <ul>
             <li>Product: {{ product.product.name }}</li>
             <li>Price: £{{ product.product.price|floatformat:2 }}</li>
-            <li>Quantity: {{ product.quantity }}</li>
+            <li>Quantity: {{ product.quantity }}
+                <button type="submit" class="quantity-up" data-product={{product.quantity}} data-action="add"><i class="fas fa-sort-up"></i></button>
+                <button type="submit" class="quantity-down" data-product={{product.quantity}} data-action="remove"><i class="fas fa-sort-down"></i></button></li>
             <li>Total: £{{ product.get_total|floatformat:2 }}</li>
         </ul>
     </div>
