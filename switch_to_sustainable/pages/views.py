@@ -20,7 +20,7 @@ def home(request):
 
 def products(request):
     if request.method == 'GET':
-        items = Item.objects.all()
+        items = Item.objects.filter(is_approved=True)
         item_id = request.GET.get('item_id')  
         context = {'item_id': item_id, 'items':items}
     
@@ -59,10 +59,10 @@ def new_product_form(request):
         messages.success(request, f'Thank you for your suggestion: "{replacement}". We will review whether it replaces {single_use_product} and then add it to our website.')
         return render(request, 'new_product.html', {'form': form})
 
-    item = Item(name = single_use_product)
+    item = Item(name = single_use_product, is_approved = False)
     item.save()
     item_id = item.id
-    new_product = Product(name = replacement, description = description, item_id = item_id)
+    new_product = Product(name = replacement, description = description, item_id = item_id, is_approved = False)
     new_product.save()
     
     messages.success(request, f'Thank you for your suggestion: "{replacement}".')
@@ -227,7 +227,7 @@ def update_item(request):
 
 def eco_shop(request):
     item_id = request.GET.get('item_id')
-    items = Item.objects.all()
+    items = Item.objects.filter(is_approved=True)
     products = [
         {
             'id': product.id,

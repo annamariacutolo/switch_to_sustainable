@@ -2,105 +2,120 @@
         "model": "pages.item",
         "pk": 1,
         "fields": {
-            "name": "Toothbrush"
+            "name": "Toothbrush",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 2,
         "fields": {
-            "name": "Straws"
+            "name": "Straws",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 3,
         "fields": {
-            "name": "Sanitary items"
+            "name": "Sanitary items",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 4,
         "fields": {
-            "name": "Make-up wipes"
+            "name": "Make-up wipes",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 5,
         "fields": {
-            "name": "Cotton buds"
+            "name": "Cotton buds",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 6,
         "fields": {
-            "name": "Shower products including shampoo, conditioner and shower gel"
+            "name": "Shower products including shampoo, conditioner and shower gel",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 7,
         "fields": {
-            "name": "Disposable coffee cups"
+            "name": "Disposable coffee cups",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 8,
         "fields": {
-            "name": "Disposable cutlery"
+            "name": "Disposable cutlery",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 9,
         "fields": {
-            "name": "Cling film"
+            "name": "Cling film",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 10,
         "fields": {
-            "name": "Plastic shopping bags"
+            "name": "Plastic shopping bags",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 11,
         "fields": {
-            "name": "Plastic water bottles"
+            "name": "Plastic water bottles",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 12,
         "fields": {
-            "name": "Paper coffee filters"
+            "name": "Paper coffee filters",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 13,
         "fields": {
-            "name": "Dental floss"
+            "name": "Dental floss",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 14,
         "fields": {
-            "name": "Disposable razors"
+            "name": "Disposable razors",
+            "is_approved": true
         }
     },
     {
         "model": "pages.item",
         "pk": 15,
         "fields": {
-            "name": "Single-use nappies"
+            "name": "Single-use nappies",
+            "is_approved": true
         }
     },
     {
