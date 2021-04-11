@@ -58,7 +58,6 @@ def new_product_form(request):
         new_product.save()
         messages.success(request, f'Thank you for your suggestion: "{replacement}". We will review whether it replaces {single_use_product} and then add it to our website.')
         return render(request, 'new_product.html', {'form': form})
-        return HttpResponseRedirect('/new_product')
 
     item = Item(name = single_use_product)
     item.save()
@@ -82,7 +81,7 @@ def register(request):
 
     return render(request, 'new_user.html', {'form': form})
 
-
+'''
 class ListProductsForItems(APIView):
     def get(self, request, format=None):
         item_id = request.GET.get('item_id')
@@ -99,11 +98,10 @@ class ListProductsForItems(APIView):
             for product in Product.objects.filter(item_id=item_id, is_approved=True)
         ]
         return Response(products)
-
+'''
 
 def check_for_match(string):
     item_list_names = Item.objects.filter().all()
-    print(item_list_names)
 
     string2 = string + "s"
 
@@ -154,7 +152,6 @@ def checkout(request):
     state = form.cleaned_data['state'].strip()
     postcode = form.cleaned_data['postcode'].strip().upper()
     phone_number = form.cleaned_data['phone_number'].strip()
-
     postcode = ''.join(postcode.split())
 
     if len(phone_number) != 11:
@@ -174,7 +171,8 @@ def checkout(request):
     order.complete = True
     order.save()
 
-    new_shipping = Shipping(customer = customer, order = order, street_address = street_address, city = city, state = state, postcode = postcode, phone_number = phone_number)
+    new_shipping = Shipping(customer = customer, order = order, street_address = street_address, 
+    city = city, state = state, postcode = postcode, phone_number = phone_number)
     new_shipping.save()
 
     messages.success(request, f'Thanks for your order')
@@ -194,15 +192,14 @@ def update_item(request):
     orderProduct, created = OrderProduct.objects.get_or_create(order=order, product=product)
     
     if action == 'add':
-        #print(product.stock)
+        print(product.stock)
         if product.stock>0:
             orderProduct.quantity = (orderProduct.quantity + 1)
             product.stock -= 1
         else:
             messages.warning(request, 'Sorry, this product is out of stock')
             return JsonResponse('Error', safe=False, status=400)
-        
-        #print(product.stock)
+        print(product.stock)
         
     elif action == 'remove':
         if orderProduct.quantity > 0:
@@ -224,7 +221,6 @@ def update_item(request):
                 'stock': product.stock,
                 'price': product.price
             }
-
 
     return JsonResponse(dict, safe=False)
 

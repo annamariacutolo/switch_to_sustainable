@@ -38,28 +38,3 @@ function updateUserOrder(productId, action) {
     })
 }
 
-function processOrder(form) {
-    console.log('order_complete');
-
-    const url = '/process_order/';
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken,
-        },
-        body: JSON.stringify({
-            'form': form
-        })
-    })
-
-    .then((response) => {
-        return response.json()
-    })
-
-    .then((data) => {
-        console.log('data:', data);
-        alert('Transaction completed')
-        window.location.href = "{% url '/' %}"
-    })
-}
