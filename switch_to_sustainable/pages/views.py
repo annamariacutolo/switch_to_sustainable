@@ -11,13 +11,14 @@ from rest_framework.response import Response
 import json
 import datetime
 from ukpostcodeutils import validation
-from django.forms import ValidationError
+from django.views.decorators.csrf import requires_csrf_token, csrf_protect
 
-
+# homepage
 def home(request):
     return render(request, 'home.html')
 
-
+# returns list of items and gets item_id
+# to get json uncomment 'return json response...' and comment out 'render' 
 def products(request):
     if request.method == 'GET':
         items = Item.objects.filter(is_approved=True)
@@ -25,8 +26,9 @@ def products(request):
         context = {'item_id': item_id, 'items':items}
     
     return render(request, 'products.html', context)
+    #return JsonResponse(list(items.values()), safe=False)
 
-
+# takes user input and if it's a valid recommendation then add to database for admin to approve
 @login_required
 def new_product_form(request):
     if request.method == 'GET':
@@ -68,7 +70,7 @@ def new_product_form(request):
     messages.success(request, f'Thank you for your suggestion: "{replacement}".')
     return HttpResponseRedirect('/new_product')
 
-
+# takes user input for registering a new account
 def register(request):
     if request.method == 'POST':
         form = NewUserForm(request.POST)
@@ -99,7 +101,7 @@ class ListProductsForItems(APIView):
         ]
         return Response(products)
 '''
-
+# simple string matcher to match item for new_product_form
 def check_for_match(string):
     item_list_names = Item.objects.filter().all()
 
@@ -113,7 +115,7 @@ def check_for_match(string):
 
     return string
 
-
+# returns the products that exist in a user's order
 def cart(request):
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -129,6 +131,7 @@ def cart(request):
         messages.warning(request, 'Please log in to make a purchase. (From cart)')
         return HttpResponseRedirect('/accounts/login')
 
+# creates Shipping instance if form is validated
 def checkout(request):
     customer = request.user.customer
     order, created = Order.objects.get_or_create(customer=customer, complete=False)
@@ -178,7 +181,7 @@ def checkout(request):
     messages.success(request, f'Thanks for your order')
     return HttpResponseRedirect('/')
 
-
+# updates product details - adjusts stock levels and product quantity accordingly
 def update_item(request):
     data = json.loads(request.body)
     productId = data['productId']
@@ -224,10 +227,12 @@ def update_item(request):
 
     return JsonResponse(dict, safe=False)
 
-
+# returns the list of products given the item_id, returns the item and item_id for the select bar
+# to get json uncomment 'return json response...' and comment out 'render' 
+@csrf_protect
 def eco_shop(request):
     item_id = request.GET.get('item_id')
-    items = Item.objects.filter(is_approved=True)
+    items = Item.objects.filter(is_approved=True).values()
     products = [
         {
             'id': product.id,
@@ -240,6 +245,6 @@ def eco_shop(request):
     ]
 
     context = {'item_id': item_id, 'products': products, 'items':items}
-
     return render(request, 'eco_shop.html', context)
+    #return JsonResponse(products, safe=False)
 
